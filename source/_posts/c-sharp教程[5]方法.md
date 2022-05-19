@@ -1,5 +1,5 @@
 ---
-title: 'C#教程[5] 方法'
+title: 'C#基础教程[5] 方法'
 tag:
   - c#
 categories:

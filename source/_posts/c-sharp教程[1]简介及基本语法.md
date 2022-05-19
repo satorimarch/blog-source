@@ -1,5 +1,5 @@
 ---
-title: 'C#教程[1] 简介及基本语法'
+title: 'C#基础教程[1] 简介及基本语法'
 tags:
   - c#
 categories:

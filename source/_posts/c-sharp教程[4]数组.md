@@ -1,5 +1,5 @@
 ---
-title: 'C#教程[4] 数组'
+title: 'C#基础教程[4] 数组'
 tag:
   - c#
 categories:

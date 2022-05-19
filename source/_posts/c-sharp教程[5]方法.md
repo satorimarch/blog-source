@@ -20,7 +20,7 @@ date: 2022-02-03 00:00:00
 我们已经用过很多内置的方法了, 例如 `WriteLine()`, `ToInt32()`, `Max()` 等等, 其实我们也可以定义方法, 定义方法的语法如下:
 
 ```csharp
-[访问修饰符] static 返回值类型 方法名([参数列表]）
+[访问修饰符] 返回值类型 方法名([参数列表]）
 {
     //方法体
 }
@@ -29,7 +29,7 @@ date: 2022-02-03 00:00:00
 让我们以下面这个方法为例, 分析一下定义方法的语法的含义
 
 ```csharp
-public int square(int a)
+public int Square(int a)
 {
     return a * a;
 }
@@ -37,11 +37,11 @@ public int square(int a)
 
 这个方法接收一个 `int` 类型的参数并记为 `a`, 然后返回 `a` 的平方
 
- - `public` 是访问修饰符, 除此之外还有 `private`, `protected` 等, 本文中所有的访问修饰符更改都不会影响结果, 先不用在意
+ - `public` 是访问修饰符, 除此之外还有 `private`, `protected` 等. 如无特殊说明, 本文中所有的访问修饰符更改都不会影响结果, 先不用在意
 
  - 其中第一个 `int` 表示的是方法的返回值的类型, 括号里的第一个(也是唯一一个) `int` 表示接收的第一个参数是 `int` 类型的, 将这个参数记为 `a`, 可以在方法体里用 `a` 来使用
 
- - 方法体就是调用这个方法之后执行的代码
+ - 方法体就是调用这个方法之后执行的代码片段
 
  - `return` 关键字表示将后面的值作为方法的返回值, **然后立刻结束该方法**
 
@@ -50,14 +50,14 @@ public int square(int a)
 ```csharp
 class Program
 {
-    public int square(int a)
+    public int Square(int a)
     {
         return a * a;
     }
 
     static void Main(string[] args)
     {
-        Console.WriteLine(square(5));
+        Console.WriteLine(Square(5));
     }
 }
 ```
@@ -110,14 +110,14 @@ int a = rd.Next();
 ```csharp
 class Calculator
 {
-    public int square(int a)
+    public int Square(int a)
     {
         return a * a;
     }
 }
 ```
 
-然后把这个类和 `Program` 类并列放在一起, 再用类似的做法调用 `square` 方法:
+然后把这个类和 `Program` 类并列放在一起, 再用类似的做法调用 `Square` 方法:
 
 ```csharp
 using System;
@@ -133,7 +133,7 @@ namespace csharp
         }
     }
 
-    class Calculator // 类的定义从这开始
+    class Calculator // Calculator类的定义从这开始
     {
         public int square(int a) // 必须使用public
         {
@@ -157,14 +157,14 @@ namespace csharp
         static void Main(string[] args)
         {
             // 不需要new一个Calculator
-            int a = Calculator.square(5); 
+            int a = Calculator.Square(5); 
             Console.WriteLine(a);
         }
     }
 
     class Calculator
     {
-        public static int square(int a) // 必须使用public
+        public static int Square(int a) // 必须使用public
         {
             return a * a;
         }
@@ -179,7 +179,7 @@ namespace csharp
 
 方法并不一定要有返回值, 如果想要定义一个没有返回值的方法可以使用 `void` 关键字代替原来的返回值类型的位置:
 ```csharp
-public static void output(string name)
+public static void Output(string name)
 {
     Console.WriteLine("My name is" + name);
 }
@@ -187,20 +187,20 @@ public static void output(string name)
 
 然后正常调用:
 ```csharp
-public static void output(string name)
+public static void Output(string name)
 {
     Console.WriteLine("My name is " + name);
 }
 
 static void Main(string[] args)
 {
-    output("jiangdu");
+    Output("jiangdu");
 }
 ```
 
 无返回值方法也可以用 `return;` 来让方法立刻结束:
 ```csharp
-public static void output(string name)
+public static void Output(string name)
 {
     if(name == "jiangdu") {
         return;
@@ -210,7 +210,7 @@ public static void output(string name)
 
 static void Main(string[] args)
 {
-    output("jiangdu");
+    Output("jiangdu");
 }
 ```
 
@@ -306,7 +306,7 @@ temp 是 temporary 的缩写, 意思是"临时的"
 
 让我们试着写一个交换两个整数的方法(有BUG):
 ```csharp
-public static void swap(int x, int y)
+public static void Swap(int x, int y)
 {
     int temp = x;
     x = y;
@@ -319,7 +319,7 @@ public static void swap(int x, int y)
 static void Main(string[] args)
 {
     int a = 5, b = 10;
-    swap(a, b);
+    Swap(a, b);
     Console.WriteLine("{0} {1}", a, b);
 }
 ```
@@ -332,7 +332,7 @@ static void Main(string[] args)
 
 方法的参数列表中的 `x` 和 `y` 称为形式参数, 简称形参, 是出现在方法的定义中用来代表传入的值的; 而具体调用时的参数 `a` 和 `b` 称为实际参数, 简称实参, 出现在调用方法的时候
 
-为了实现 `swap` 方法, 就要用到引用
+为了实现 `Swap` 方法, 就要用到引用
 
  > 引用参数是一个对变量的内存位置的引用。当按引用传递参数时，与值参数不同的是，它不会为这些参数创建一个新的存储位置。引用参数表示与提供给方法的实际参数具有相同的内存位置。
 
@@ -341,7 +341,7 @@ static void Main(string[] args)
 使用 `ref` 关键字来声明引用参数:
 
 ```csharp
-public void swap(ref int x, ref int y)
+public void Swap(ref int x, ref int y)
 {
     int temp = x;
     x = y;
@@ -356,9 +356,9 @@ public void swap(ref int x, ref int y)
 从刚刚在方法里调用 `WriteLine()` 方法以及 `Main` 方法能够调用其他方法就能看出, 方法之间是可以互相调用的. 那么, 一个方法能不能调用自身呢? 答案是肯定的, 不过先不要急着写出像下面这样的代码:
 
 ```csharp
-public static void function()
+public static void Function()
 {
-    function();
+    Function();
 }
 ```
 
@@ -367,13 +367,13 @@ public static void function()
 发生异常: CLR/System.StackOverflowException
 {% endnote %}
 
-由于 `function` 方法一直在调用自身, 而内层的方法返回之前外层的 `function` 方法不会结束, 而内层的方法又会再次调用 `function`, 然后无限重复.
+由于 `Function` 方法一直在调用自身, 而内层的方法返回之前外层的 `Function` 方法不会结束, 而内层的方法又会再次调用 `Function`, 然后无限重复.
 
 这就有点像大家从小就听过的故事：从前有座山，山里有座庙，庙里有一个老和尚和一个小和尚讲故事。从前有座山，山里有座庙，庙里有一个老和尚和一个小和尚讲故事...
 
-关注刚刚报错信息中的 `StackOverflow` 这个词, `Stack` 是栈的意思, 这里指的是调用栈, 你可以理解为是一种容器, 每当方法调用的时候就会往里装东西, 例如按值传递的时候会把复制之后的值放在这里; 当方法返回的时候就会把对应的东西扔掉
+关注刚刚报错信息中的 `StackOverflow` 这个词, `Stack` 是栈的意思, 这里指的是调用栈, 你可以理解为是一种只能从上方放东西或者取东西的容器, 每当方法调用的时候就会往里装东西, 例如按值传递的时候会把复制之后的值放在这里; 当方法返回的时候就会把对应的东西拿出来扔掉
 
-`StackOverflow` 就是栈溢出,  因为那个方法一直在无限重复调用自身, 而每次调用都会往栈里装东西, 所以最后装满了放不下了, 然后你的程序就崩溃了.
+`StackOverflow` 就是栈溢出,  因为那个方法一直在无限重复调用自身, 而每次调用都会往栈里装东西, 但没有方法返回所以不会取出任何东西, 最后装满了放不下了, 然后你的程序就崩溃了.
 
 因此我们需要给调用自身一个终止条件:
 ```csharp
@@ -421,11 +421,11 @@ public static void Recursion(int n)
         return;
     }
     Console.WriteLine(n);
-    Recursion(n-1);
+    Recursion(n - 1);
 }
 ```
 
-因为每个方法会先输出自己的 `n` 的值再调用自身, 所以输出会先从 `5` 开始, `0` 结束
+因为 `Recursion(i)` 会先输出自己的 `n` 的值再调用 `Recursion(i - 1)`, 所以输出会先从 `5` 开始, `0` 结束
 
 ## 例题5-2 斐波那契数列
 
@@ -447,25 +447,25 @@ public static int Fib(int n)
     if(n == 1 || n == 2){
         return 1;
     }
-    return Fib(n-1) + Fib(n-2);
+    return Fib(n - 1) + Fib(n - 2);
 }
 ```
 
 由此可见, 数学上的递推公式可以直观的用递归写出来, 很多算法也都是用递归来实现的, 例如dfs
 
-由于递归时调用的过程是这样的:
+递归时调用的过程是这样的:
 
 ![](https://s6.jpg.cm/2022/02/07/LoqS32.png)
 
-注意到这张图里 `fib(3)` 以及它下面会调用的方法这个整体会被计算两遍, 因此刚刚的递归会产生大量重复运算, 而使用下文展示的循环则只会计算一次, 所以这里用循环会比递归要快:
+注意到这张图里 `Fib(3)` 以及它下面会调用的方法这个整体会被计算两遍, 因此刚刚的递归会产生大量重复运算, 而使用下文展示的循环对于每个 `fib(i)` 则只会计算一次, 所以这里用循环会比刚刚那种递归要快很多:
 
 ```csharp
 int n = 10;
-int[] fib = new int[n+1];
+int[] fib = new int[n + 1];
 
 fib[1] = fib[2] = 1;
 for(int i = 3; i <= n; i++){
-    fib[i] = fib[i-1] + fib[i-2];
+    fib[i] = fib[i - 1] + fib[i - 2];
 }
 Console.WriteLine(fib[n]);
 ```
@@ -495,7 +495,7 @@ int mod = 1000000000;
 
 int first = 1, second = 1, third = 2;
 for(int i = 3; i <= n; i++){
-    third = (first + second) % mod;
+    third = (first + second) % mod; // 在这里取模
     first = second;
     second = third;
 }
@@ -507,7 +507,7 @@ double deltaTime = (finishTime - startTime).TotalMilliseconds; // 计算时间�
 Console.WriteLine("use {0} ms", deltaTime);
 ```
 
-递归也可以改写为只计算一次的：
+递归也可以改写为只计算一次的
 
 ```csharp
 public static int Fib(int n, int[] fib)
@@ -516,14 +516,14 @@ public static int Fib(int n, int[] fib)
         return 1;
     }
     if(fib[n] != 0) return fib[n];
-    fib[n] = Fib(n-1, fib) + Fib(n-2, fib);
+    fib[n] = Fib(n - 1, fib) + Fib(n - 2, fib);
     return fib[n];
 }
 
 static void Main(string[] args)
 {
     int n = 40;
-    int[] fib = new int[n+1];
+    int[] fib = new int[n + 1];
 
     Console.WriteLine(Fib(n, fib));
 }

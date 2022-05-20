@@ -38,7 +38,7 @@ while (true) {
 ```csharp
 int a = 5;
 while (a < 10) {
-    Console.WriteLine("a 的值： {0}", a);
+    Console.WriteLine("a 的值: {0}", a);
     a++; // 自增运算符, 相当于 a = a + 1;
 }
 ```
@@ -48,11 +48,11 @@ while (a < 10) {
 {% hideToggle 点我查看输出结果 %}
 
 ```
-a 的值： 5
-a 的值： 6
-a 的值： 7
-a 的值： 8
-a 的值： 9
+a 的值: 5
+a 的值: 6
+a 的值: 7
+a 的值: 8
+a 的值: 9
 ```
 
 {% endhideToggle %}
@@ -87,7 +87,7 @@ Console.WriteLine("输入你猜测的数字:");
 int num = Convert.ToInt32(Console.ReadLine());
 
 while(num != a) {
-    if(num < a){
+    if (num < a) {
         Console.WriteLine("不对不对, 太小了");
     }
     else {
@@ -95,7 +95,7 @@ while(num != a) {
     }
     Console.WriteLine("再猜一次吧:");
     num = Convert.ToInt32(Console.ReadLine());
-
+}
 Console.WriteLine("恭喜你猜对了!");
 ```
 
@@ -109,7 +109,7 @@ Console.WriteLine("恭喜你猜对了!");
 string str = Console.ReadLine();
 int a=0, b=0;
 while(str != "0") {
-    if(str == "A"){
+    if (str == "A") {
         a++;
     }
     else {
@@ -118,10 +118,10 @@ while(str != "0") {
     str = Console.ReadLine(); // 不要忘记重新读取下一行
 }
 
-if(a > b){
+if (a > b) {
     Console.WriteLine("A");
 }
-else if(a < b){
+else if (a < b) {
     Console.WriteLine("B");
 }
 else {
@@ -151,7 +151,7 @@ for (int i=0; i < 10; i++) {
 
 ```csharp
 for (int a=5; a < 10; a++) {
-    Console.WriteLine("a 的值： {0}", a);
+    Console.WriteLine("a 的值: {0}", a);
 }
 ```
 
@@ -160,7 +160,7 @@ for (int a=5; a < 10; a++) {
 ```csharp
 int a = 5; // 被小括号里的第一部分代替
 while (a < 10) { // 被小括号里的第二部分代替
-    Console.WriteLine("a 的值： {0}", a);
+    Console.WriteLine("a 的值: {0}", a);
     a++; // 被小括号里的第三部分代替
 }
 ```
@@ -169,7 +169,7 @@ while (a < 10) { // 被小括号里的第二部分代替
 
 ```csharp
 for (int a=5; a < 10; a++) {
-    Console.WriteLine("a 的值： {0}", a);
+    Console.WriteLine("a 的值: {0}", a);
 }
 Console.WriteLine(a); // 会报错告诉你 a 没有定义
 ```
@@ -181,7 +181,7 @@ Console.WriteLine(a); // 会报错告诉你 a 没有定义
 ```csharp
 int a;
 for (a=5; a < 10; a++) {
-    Console.WriteLine("a 的值： {0}", a);
+    Console.WriteLine("a 的值: {0}", a);
 }
 Console.WriteLine(a); // 正常执行，输出10
 ```
@@ -219,15 +219,15 @@ Console.WriteLine(a); // 正常执行，输出10
 ```csharp
 // 注意这里用的是 <= , 如果想模仿上面的例子使用 <, 请写 101
 for(int i=1; i <= 100; i++) {
-    if(i % 3 == 0 && i % 5 == 0) { // 如果同时能被 3 和 5 整除执行
+    if (i % 3 == 0 && i % 5 == 0) { // 如果同时能被 3 和 5 整除执行
         Console.WriteLine("{0} - FizzBuzz", i);
     }
     // 注意 else, 不能被同时整除的时候却能被 3 整除才执行
-    else if(i % 3 == 0) { 
+    else if (i % 3 == 0) { 
         Console.WriteLine("{0} - Fizz", i);
     }
     // 同样注意 else, 不能被同时整除 也不能被 3 整除 却能被 5 整除执行
-    else if(i % 5 == 0) {
+    else if (i % 5 == 0) {
         Console.WriteLine("{0} - Buzz", i);
     }
     else { // 上述情况都不满足说明不能被任何一个整除
@@ -240,13 +240,13 @@ for(int i=1; i <= 100; i++) {
 
 ```csharp
 for(int i=1; i <= 100; i++) {
-    if(i % 3 == 0 && i % 5 == 0) {
+    if (i % 3 == 0 && i % 5 == 0) {
         Console.WriteLine("{0} - FizzBuzz", i);
     }
-    else if(i % 3 == 0) { 
+    else if (i % 3 == 0) { 
         Console.WriteLine("{0} - Fizz", i);
     }
-    else if(i % 5 == 0) {
+    else if (i % 5 == 0) {
         Console.WriteLine("{0} - Buzz", i);
     }
     else {
@@ -268,13 +268,13 @@ for (int i=1; i <= 10; i += 2) {  } // {1, 3, 5, 7, 9}
 
 ## 嵌套循环
 
-循环是可以嵌套的，当出现嵌套循环的时候，先执行内层循环，内层循环执行完一遍之后再回到外层的循环，再从外层循环进入内层循环，类似数学中的 $\sum\sum$，又类似平常说的“先从上到下 再从左到右” 这种也可以理解为嵌套循环。让我们看一个例子：
+循环是可以嵌套的，当出现嵌套循环的时候，先执行内层循环，内层循环执行完一遍之后再回到外层的循环，再从外层循环进入内层循环，类似数学中的 $\sum\sum$，又类似平常说的“先从上到下 再从左到右”也可以理解为嵌套循环。让我们看一个例子：
 
 ```csharp
 for(int i=5; i < 10; i++) {
-    Console.WriteLine("i 的值： {0}", i);
+    Console.WriteLine("i 的值: {0}", i);
     for(int j=5; j < 8; j++) {
-        Console.WriteLine("    j 的值： {0}", j);
+        Console.WriteLine("    j 的值: {0}", j);
     }
 }
 ```
@@ -288,26 +288,26 @@ for(int i=5; i < 10; i++) {
 {% hideToggle 输出 %}
 
 ```
-i 的值： 5
-    j 的值： 5
-    j 的值： 6
-    j 的值： 7
-i 的值： 6
-    j 的值： 5
-    j 的值： 6
-    j 的值： 7
-i 的值： 7
-    j 的值： 5
-    j 的值： 6
-    j 的值： 7
-i 的值： 8
-    j 的值： 5
-    j 的值： 6
-    j 的值： 7
-i 的值： 9
-    j 的值： 5
-    j 的值： 6
-    j 的值： 7
+i 的值: 5
+    j 的值: 5
+    j 的值: 6
+    j 的值: 7
+i 的值: 6
+    j 的值: 5
+    j 的值: 6
+    j 的值: 7
+i 的值: 7
+    j 的值: 5
+    j 的值: 6
+    j 的值: 7
+i 的值: 8
+    j 的值: 5
+    j 的值: 6
+    j 的值: 7
+i 的值: 9
+    j 的值: 5
+    j 的值: 6
+    j 的值: 7
 ```
 
 {% endhideToggle %}
@@ -352,8 +352,8 @@ for(int i=1; i <= n; i++) {
 
 ```csharp
 for(int i=5; i < 10; i++) {
-    if(i == 8) break;
-    Console.WriteLine("i 的值： {0}", i);
+    if (i == 8) break;
+    Console.WriteLine("i 的值: {0}", i);
 }
 Console.WriteLine("end loop");
 ```
@@ -361,9 +361,9 @@ Console.WriteLine("end loop");
 {% hideToggle 输出 %}
 
 ```
-i 的值： 5
-i 的值： 6
-i 的值： 7
+i 的值: 5
+i 的值: 6
+i 的值: 7
 end loop
 ```
 
@@ -373,9 +373,9 @@ end loop
 
 ```csharp
 for (int i = 5; i < 10; i++) {
-    Console.WriteLine("i 的值： {0}", i);
+    Console.WriteLine("i 的值: {0}", i);
     for (int j=5; j < 9; j++) {
-        if(j == 7) break;
+        if (j == 7) break;
         Console.WriteLine("    j 的值： {0}", j);
     }
 }
@@ -384,21 +384,21 @@ for (int i = 5; i < 10; i++) {
 {% hideToggle 输出 %}
 
 ```
-i 的值： 5
-    j 的值： 5
-    j 的值： 6
-i 的值： 6
-    j 的值： 5
-    j 的值： 6
-i 的值： 7
-    j 的值： 5
-    j 的值： 6
-i 的值： 8
-    j 的值： 5
-    j 的值： 6
-i 的值： 9
-    j 的值： 5
-    j 的值： 6
+i 的值: 5
+    j 的值: 5
+    j 的值: 6
+i 的值: 6
+    j 的值: 5
+    j 的值: 6
+i 的值: 7
+    j 的值: 5
+    j 的值: 6
+i 的值: 8
+    j 的值: 5
+    j 的值: 6
+i 的值: 9
+    j 的值: 5
+    j 的值: 6
 ```
 
 {% endhideToggle %}
@@ -411,8 +411,8 @@ i 的值： 9
 
 ```csharp
 for(int i=5; i < 10; i++) {
-    if(i == 8) continue;
-    Console.WriteLine("i 的值： {0}", i);
+    if (i == 8) continue;
+    Console.WriteLine("i 的值: {0}", i);
 }
 Console.WriteLine("end loop");
 ```
@@ -420,10 +420,10 @@ Console.WriteLine("end loop");
 {% hideToggle 输出 %}
 
 ```
-i 的值： 5
-i 的值： 6
-i 的值： 7
-i 的值： 9
+i 的值: 5
+i 的值: 6
+i 的值: 7
+i 的值: 9
 end loop
 ```
 

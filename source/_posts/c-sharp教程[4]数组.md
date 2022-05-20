@@ -40,7 +40,7 @@ error CS0165: 使用了未赋值的局部变量“score”
 int[] scores = new int[5];
 ```
 
-其中方括号里的数组表示的是数组的大小，数组的长度是固定的，所以必须说明它的大小。
+其中方括号里的数组表示的是数组的大小，也就是数组中元素的个数。数组的长度是固定的，所以必须说明它的大小。
 
 {% note info flat %}
 你可以声明任意类型的数组, 比如 `double`, `string` 等, 还有更复杂的还没学到的, 现在只用 `int` 举例
@@ -54,23 +54,24 @@ int[] scores = new int[5];
 
 你可以在声明的时候对数组中的元素赋初始值，例如：
 ```csharp
-int[] scores = new int[5]{98, 97, 94, 92, 95};
+int[] scores = new int[5] { 98, 97, 94, 92, 95 };
 ```
 
 此时 `scores` 数组中第一个元素是 98, 索引是 0, 最后一个元素是95, 索引是 4 
 
 使用 `scores[index]` 访问数组中的元素:
 ```csharp
-int[] scores = new int[5]{98, 97, 94, 92, 95};
+int[] scores = new int[5] { 98, 97, 94, 92, 95 };
 Console.WriteLine(scores[1]);
 ```
 
-输出为 `97`
+输出为 97 (注意不是 98, 因为数组从 0 开始计数)
 
-也可以这样更改数组中的元素:
+可以这样来更改数组中的元素:
 ```csharp
-int[] scores = new int[5]{98, 97, 94, 92, 95};
+int[] scores = new int[5] { 98, 97, 94, 92, 95 };
 scores[1] = 99;
+Console.WriteLine(scores[1]); // 输出 99
 ```
 
 {% note danger flat %}
@@ -89,15 +90,15 @@ scores[5] = 1;
 Index was outside the bounds of the array.
 {% endnote %}
 
-翻译过来就是: 下标超过了数组的边界, 也就是"数组越界"
+翻译过来就是: 下标超过了数组的边界, 也就是"数组越界", 因为数组的 下标从 0 开始, 而这个数组只有 5 个元素, 所以下标范围是[0, 4], 故发生了数组越界.
 
 # 遍历数组
 
-为了一次性访问数组中的诸多元素, 可以使用第二节学过的循环：
+为了一次性访问数组中的诸多元素, 可以使用第二节学过的循环:
 
 ```csharp
-int[] scores = new int[5]{98, 97, 94, 92, 95};
-for(int i=0; i < 5; i++){ // 注意这里的条件
+int[] scores = new int[5] { 98, 97, 94, 92, 95 };
+for (int i = 0; i < 5; i++) { // 注意这里的条件
     Console.WriteLine(scores[i]);
 }
 ```
@@ -114,47 +115,47 @@ for(int i=0; i < 5; i++){ // 注意这里的条件
 也可以试试用循环进行初始化
 ```csharp
 int[] scores = new int[5];
-for(int i=0; i < 5; i++){ // 注意这里的条件
+for (int i = 0; i < 5; i++) { // 注意这里的条件
     scores[i] = i;
 }
 ```
 
 当你不知道数组有多大的时候，可以使用 `arrayName.Length` 访问数组的长度，上面的代码可以写为：
 ```csharp
-int[] scores = new int[5]{98, 97, 94, 92, 95};
-for(int i=0; i < scores.Length; i++){ // 注意这里的条件
+int[] scores = new int[5] { 98, 97, 94, 92, 95 };
+for (int i = 0; i < scores.Length; i++) { // 注意这里的条件
 scores[i] = i;
 }
 ```
 
-注意 `Length` 后面不要写括号，因为这不是个函数
+注意 `Length` 后面不要写括号，因为这不是个函数，而是一个属性
 
 为了方便起见, 你也可以不用索引为 0 的元素, 比如要存 5 个元素的时候写为这样:
 ```csharp
 int[] scores = new int[6];
-for(int i=1; i <= 5; i++){
+for (int i = 1; i <= 5; i++) {
     scores[i] = i;
 }
 ```
 
 {% note danger flat %}
 如果这么用的话请一定要注意给数组多分配一个长度, 因为第 0 个被空出来了
-以及注意 `for` 循环时一定要循环到 `<= arrayName.Length` 这样才能遍历全部元素
+以及注意 `for` 循环时一定要循环到 `<= arrayName.Length - 1` 这样才能遍历全部元素
 {% endnote %}
 
 
 ## `foreach` 语句
-不过其实我们有更简单的循环的办法，之前在讲循环的时候因为没讲过数组所以没讲，就是使用 `foreach` 语句
+其实我们有更简单的循环的语句，之前在讲循环的时候因为没学数组所以没讲，就是使用 `foreach` 语句
 
 类似 `python` 中的 `for item in array:`，你可以直接用 `foreach` 来访问数组中的每一个值，例如：
 ```csharp
-int[] scores = new int[5]{98, 97, 94, 92, 95};
-foreach (int i in scores){
+int[] scores = new int[5] { 98, 97, 94, 92, 95 };
+foreach (int i in scores) {
     Console.WriteLine(i);              
 }
 ```
 
-注意 `i` 本身就是数组中的一个元素，而不是索引，所以应该直接输出 `i`
+ `i` 本身代表数组中的一个元素，而不是索引，所以应该直接输出 `i`
 
 请注意 `foreach` 语句中的 `i` 是不能被赋值的, 也就是说只能用 `foreach` 来查询数组中的值而不能用来赋值
 
@@ -162,9 +163,9 @@ foreach (int i in scores){
 求所有学生中的最高分数
 
 ```csharp
-int[] scores = new int[5]{98, 97, 94, 92, 95};
+int[] scores = new int[5] { 98, 97, 94, 92, 95 };
 int maxScore = 0;
-foreach (int item in scores){
+foreach (int item in scores) {
     maxScore = Math.Max(item, maxScore);
 }
 Console.WriteLine(maxScore);
@@ -175,9 +176,9 @@ Console.WriteLine(maxScore);
 如果你不愿意使用这个函数, 可以改为：
 
 ```csharp
-int[] scores = new int[5]{98, 97, 94, 92, 95};
+int[] scores = new int[5] { 98, 97, 94, 92, 95 };
 int maxScore = 0;
-foreach (int item in scores){
+foreach (int item in scores) {
     if(maxScore < item) maxScore = item;
 }
 Console.WriteLine(maxScore);
@@ -189,7 +190,7 @@ Console.WriteLine(maxScore);
 这里的 `Array` 是一个类, 包含很多与数组有关的函数
 
 ```csharp
-int[] scores = new int[5]{98, 97, 94, 92, 95};
+int[] scores = new int[5] { 98, 97, 94, 92, 95 };
 Array.Sort(scores);
 ```
 
@@ -201,13 +202,13 @@ Array.Sort(scores);
 int n = Convert.ToInt32(Console.ReadLine()); // 学生总数
 
 int[] scores = new int[n];
-for(int i=0; i < n; i++){
+for (int i = 0; i < n; i++) {
     scores[i] = Convert.ToInt32(Console.ReadLine()); // 每个学生的分数
 }
 
 Array.Sort(scores);
 
-for(int i=n-1; i >= 0; i--){
+for (int i = n - 1; i >= 0; i--) {
     Console.WriteLine(scores[i]);
 }
 ```
@@ -218,7 +219,7 @@ for(int i=n-1; i >= 0; i--){
 Array.Sort(scores);
 Array.Reverse(scores);
 
-for(int i=0; i < n; i++){
+for (int i = 0; i < n; i++) {
     Console.WriteLine(scores[i]);
 }
 ```
@@ -235,14 +236,14 @@ for(int i=0; i < n; i++){
 int n = Convert.ToInt32(Console.ReadLine()); // 学生总数
 
 int[] scores = new int[n+1]; // 因为后面空过去了第 0 个元素所以这里要声明为 n+1, 否则会数组越界
-for(int i=1; i <= n; i++){
+for (int i = 1; i <= n; i++) {
     scores[i] = Convert.ToInt32(Console.ReadLine());
 }
 
 Array.Sort(scores, 1, n);
 Array.Reverse(scores, 1, n);
 
-for(int i=1; i <= n; i++){
+for (int i = 1; i <= n; i++) {
     Console.WriteLine(scores[i]);
 }
 ```
@@ -254,16 +255,16 @@ Console.Write("请输入学生总数: ");
 int n = Convert.ToInt32(Console.ReadLine());
 
 int[] scores = new int[n+1]; 
-for(int i=1; i <= n; i++){
-    Console.Write("请输入第{0}个学生的分数: ", i);
+for (int i = 1; i <= n; i++) {
+    Console.Write("请输入第{ 0 }个学生的分数: ", i);
     scores[i] = Convert.ToInt32(Console.ReadLine());
 }
 
 Array.Sort(scores, 1, n);
 Array.Reverse(scores, 1, n);
 
-for(int i=1; i <= n; i++){
-    Console.WriteLine("第{0}名的分数: {1}", i, scores[i]);
+for (int i = 1; i <= n; i++) {
+    Console.WriteLine("第{ 0 }名的分数: { 1 }", i, scores[i]);
 }
 ```
 
@@ -289,10 +290,10 @@ Console.Write("请输入学生总数: ");
 int n = Convert.ToInt32(Console.ReadLine());
 
 Tuple<int, string>[] scores = new Tuple<int, string>[n+1];
-for(int i=1; i <= n; i++){
-    Console.Write("请输入第{0}个学生的姓名: ", i);
+for (int i = 1; i <= n; i++) {
+    Console.Write("请输入第{ 0 }个学生的姓名: ", i);
     string b = Console.ReadLine();
-    Console.Write("请输入第{0}个学生的分数: ", i);
+    Console.Write("请输入第{ 0 }个学生的分数: ", i);
     int a = Convert.ToInt32(Console.ReadLine());
 
     scores[i] = Tuple.Create(a, b);
@@ -301,12 +302,12 @@ for(int i=1; i <= n; i++){
 Array.Sort(scores, 1, n);
 Array.Reverse(scores, 1, n);
 
-for(int i=1; i <= n; i++){
-    Console.WriteLine("第{0, -2}名:  {1, -5}{2, -5}", i, scores[i].Item1, scores[i].Item2);
+for (int i = 1; i <= n; i++) {
+    Console.WriteLine("第{ 0, -2 }名:  { 1, -5 }{ 2, -5 }", i, scores[i].Item1, scores[i].Item2);
 }
 ```
 
-最后输出时的占位符 `{0, -2}` 中, 第一个参数 `0` 的意思与之前的 `{0}` 一样, 表示后面下标为 `0` 的对象, `-2` (的绝对值)表示输出的长度, 不足的补成空格, 负号表示左对齐(没有负号表示右对齐), 这样是为了输出的时候同一列数据可以左对齐, 好看一点, 你也可以不用
+最后输出时的占位符 `{ 0, -2 }` 中, 第一个参数 `0` 的意思与之前的 `{ 0 }` 一样, 表示后面下标为 `0` 的对象, `-2` (的绝对值)表示输出的长度, 不足的补成空格, 负号表示左对齐(没有负号表示右对齐), 这样是为了输出的时候同一列数据可以左对齐, 好看一点, 你也可以不用
 
 # 数组相关函数
 这里介绍一些相对常用的函数
@@ -330,7 +331,7 @@ stringName.Split(Seperator);
 ```csharp
 string a = "a ab abc abcd";
 string[] strArray = a.Split(" ");
-foreach(string i in strArray){
+foreach(string i in strArray) {
     Console.WriteLine(i);
 }
 ```
@@ -344,8 +345,8 @@ foreach(string i in strArray){
 ```csharp
 string temp = Console.ReadLine();
 string[] a = temp.Split(" ");
-for(int i=a.Length-1; i >= 0; i--){
-    Console.Write("{0} ", a[i]);
+for (int i=a.Length-1; i >= 0; i--) {
+    Console.Write("{ 0 } ", a[i]);
 }
 ```
 
@@ -364,36 +365,36 @@ type[,] array = new type[x, y];
 
 例如声明一个 3 行 4 列的数组并初始化:
 ```csharp
-int[,] a = new int [3,4] {
-    {0, 1, 2,  3},
-    {4, 5, 6,  7},
-    {8, 9, 10, 11}
+int[,] a = new int[3, 4] { 
+    { 0, 1, 2, 3 }, 
+    { 4, 5, 6, 7 }, 
+    { 8, 9, 10, 11 } 
 };
 ```
 
-换行当然是可以删掉的, 写成:
+换行是为了方便阅读, 当然是可以删掉的, 写成:
 ```csharp
-int[,] a = new int [3, 4] { {0, 1, 2, 3}, {4, 5, 6, 7}, {8, 9, 10, 11} };
+int[,] a = new int [3, 4] { { 0, 1, 2, 3 }, { 4, 5, 6, 7 }, { 8, 9, 10, 11 } };
 ```
 
 我们可以用 `a[i, j]` 来访问这个二维数组中第 `i` 行 第 `j` 列的元素, 例如:
 
 ```csharp
-int[,] a = new int [3,4] { {0, 1, 2, 3}, {4, 5, 6, 7}, {8, 9, 10, 11} };
+int[,] a = new int [3,4] { { 0, 1, 2, 3 }, { 4, 5, 6, 7 }, { 8, 9, 10, 11 } };
 Console.WriteLine(a[1, 2]);
 ```
 
-从本质上讲, `a[1]` 访问的是 `a` 中的第 1 个元素(从 0 开始), 也就是一个数组 `{4, 5, 6, 7}`
-而例如 `a[1, 2]` 也就是访问 `a[2]` 中的第 2 个元素, 也就是 数组 `{4, 5, 6, 7}` 中的第 2 个元素, 所以 `a[i, j]` 为 6
+从本质上讲, `a[1]` 访问的是 `a` 中的第 1 个元素(从 0 开始), 也就是一个数组 `{ 4, 5, 6, 7 }`
+而例如 `a[1, 2]` 也就是访问 `a[2]` 中的第 2 个元素, 也就是 数组 `{ 4, 5, 6, 7 }` 中的第 2 个元素, 所以 `a[i, j]` 为 6
 
 不过在平时使用时不需过多关注它本质的意思, 当成表格就好
 
 循环访问二维数组的元素如下:
 ```csharp
-int[,] a = new int [3,4] { {0, 1, 2, 3}, {4, 5, 6, 7}, {8, 9, 10, 11} };
-for(int i=0; i < 3; i++){
-    for(int j=0; j < 4; j++){
-        Console.WriteLine("({0}, {1}): {2}", i, j, a[i, j]);
+int[,] a = new int [3,4] { { 0, 1, 2, 3 }, { 4, 5, 6, 7 }, { 8, 9, 10, 11 } };
+for (int i = 0; i < 3; i++) {
+    for (int j = 0; j < 4; j++) {
+        Console.WriteLine("({ 0 }, { 1 }): { 2 }", i, j, a[i, j]);
     }
 }
 ```
@@ -401,8 +402,8 @@ for(int i=0; i < 3; i++){
 其实 `foreach` 也可以遍历二维数组中的所有元素, 但是一般情况下我们可能会需要数据的坐标(指位于的行和列), 那种情况下就不能用了
 
 ```csharp
-int[,] a = new int [3,4] { {0, 1, 2, 3}, {4, 5, 6, 7}, {8, 9, 10, 11} };
-foreach(int item in a){
+int[,] a = new int [3,4] { { 0, 1, 2, 3 }, { 4, 5, 6, 7 }, { 8, 9, 10, 11 } };
+foreach(int item in a) {
     Console.WriteLine(item);
 }
 ```
@@ -428,11 +429,11 @@ Random rd = new Random();
 然后循环访问随机位置, 把它设成雷:
 
 ```csharp
-for(int cnt=1; cnt <= mineNum; ){ // cnt 表示正在放第 cnt 个雷, 注意这后面没写 cnt++
+for (int cnt=1; cnt <= mineNum; ) { // cnt 表示正在放第 cnt 个雷, 注意这后面没写 cnt++
     int x = rd.Next(1, row+1); // 注意范围为左闭右开, 所以 row 需要加 1
     int y = rd.Next(1, col+1); 
 
-    if(map[x, y] != -1){ // 不要重复放置雷, 那样雷的总数会少
+    if(map[x, y] != -1) { // 不要重复放置雷, 那样雷的总数会少
         map[x, y] = -1;
         cnt++;
     }
@@ -442,9 +443,9 @@ for(int cnt=1; cnt <= mineNum; ){ // cnt 表示正在放第 cnt 个雷, 注意�
 接下来要访问整个棋盘, 数每个不是雷的格子周围的雷的数量, 代码:
 
 ```csharp
-for(int row = 1; row <= mapRow; row++){ // 循环每行
-    for(int col = 1; col <= mapColumn; col++){ // 循环每列
-        if(map[row, col] != -1){ // 如果不是雷再计数
+for (int row = 1; row <= mapRow; row++) { // 循环每行
+    for (int col = 1; col <= mapColumn; col++) { // 循环每列
+        if(map[row, col] != -1) { // 如果不是雷再计数
             // do something (见后文)
         }
     }
@@ -465,7 +466,7 @@ int[] moveColumn = { -1,  0, 1, 1,  1,  0, -1, -1 };
 这样我们只要循环 `i`, 将当前的格子横纵坐标分别加上 `moveRow[i]` 和 `moveColumn[i]`, 就能遍历一个格子周围所有的位置了, 代码:
 ```csharp
 int cnt = 0; // 用来记录周围雷的数量
-for(int i=0; i < 8; i++){
+for (int i = 0; i < 8; i++) {
     int currRow = row + moveRow[i]; // 新的行数
     int currCol = col + moveColumn[i]; // 新的列数
 
@@ -482,8 +483,8 @@ map[row, col] = cnt;
 另一个方法不需要辅助数组, 再写一个二重循环, 判断一下不是本格就好:
 ```csharp
 int cnt = 0; // 用来记录周围雷的数量
-for(int i = -1; i <= 1; i++){
-    for(int j = -1; j <= 1; j++){
+for (int i = -1; i <= 1; i++) {
+    for (int j = -1; j <= 1; j++) {
         int currRow = row + i; // 新的行数
         int currCol = col + j; // 新的列数
     }
@@ -508,28 +509,27 @@ map[row, col] = cnt;
 int mapRow = 10, mapColumn = 10, mineNum = 10;
 int[,] map = new int[mapRow+1, mapColumn+1];
 
-int[] moveRow = { 1, 1, 1, 0, -1, -1, -1, 0 };
+int[] moveRow    = { 1, 1, 1, 0, -1, -1, -1, 0 };
 int[] moveColumn = { -1, 0, 1, 1, 1, 0, -1, -1 };
 
 
 Random rd = new Random();
 
-for(int cnt=1; cnt <= mineNum; ){ // cnt 表示正在放第 cnt 个雷, 注意这后面没写 cnt++
+for (int cnt=1; cnt <= mineNum; ) { // cnt 表示正在放第 cnt 个雷, 注意这后面没写 cnt++
     int x = rd.Next(1, mapRow+1); // 注意范围为左闭右开, 所以 row 需要加 1
     int y = rd.Next(1, mapColumn+1); 
 
-    if(map[x, y] != -1){ // 不要重复放置雷, 那样雷的总数会少
+    if(map[x, y] != -1) { // 不要重复放置雷, 那样雷的总数会少
         map[x, y] = -1;
         cnt++;
     }
 }
 
-for(int row = 1; row <= mapRow; row++){ // 循环每行
-    for(int col = 1; col <= mapColumn; col++){ // 循环每列
-        if(map[row, col] != -1){ // 如果不是雷再计数
-
+for (int row = 1; row <= mapRow; row++) { // 循环每行
+    for (int col = 1; col <= mapColumn; col++) { // 循环每列
+        if(map[row, col] != -1) { // 如果不是雷再计数
             int cnt = 0; // 用来记录周围雷的数量
-            for(int i=0; i < 8; i++){
+            for (int i = 0; i < 8; i++) {
                 int currRow = row + moveRow[i]; // 新的行数
                 int currCol = col + moveColumn[i]; // 新的列数
 
@@ -545,13 +545,13 @@ for(int row = 1; row <= mapRow; row++){ // 循环每行
     }
 }
 
-for(int i=1; i <= mapRow; i++){
-    for(int j=1; j <= mapColumn; j++){
+for (int i = 1; i <= mapRow; i++) {
+    for (int j = 1; j <= mapColumn; j++) {
         if(map[i, j] == -1) {
             Console.Write("* "); // 为了便于观察, 如果是雷就输出星号
         }
         else {
-            Console.Write("{0} ", map[i, j]);
+            Console.Write("{ 0 } ", map[i, j]);
         }
     }
     Console.WriteLine(""); // 输出空行
@@ -584,7 +584,7 @@ Console.WriteLine(str[0]);
 
 ```csharp
 string str = "abcde";
-for(int i=0; i < str.Length; i++){
+for (int i = 0; i < str.Length; i++) {
     Console.WriteLine(str[i]);
 }
 ```
@@ -592,7 +592,7 @@ for(int i=0; i < str.Length; i++){
 当然也可以用 `foreach` 语句循环遍历字符串:
 ```csharp
 string str = "abcde";
-foreach(char c in str){
+foreach(char c in str) {
     Console.WriteLine(c);
 }
 ```
@@ -602,7 +602,7 @@ foreach(char c in str){
 因为字符串的本意就是一堆 "字符" 串起来, 也就是说, 字符串中的每一个元素应该是一个字符
 `char` 就是表示字符的数据类型(英文character的缩写), 字符`a` 写为 `'a'`
 
-因为 `'a'` (字符`a`)容易与 `"a"` (字符串`a`)混淆所以之前一直没有提过, 他们的区别就类似于int类型的 `5` 与 只有一个int类型的元素的数组 `{5}`, 是不一样的东西
+因为 `'a'` (字符`a`)容易与 `"a"` (字符串`a`)混淆所以之前一直没有提过, 他们的区别就类似于int类型的 `5` 与 只有一个int类型的元素的数组 `{ 5 }`, 是不一样的东西
 
 ## 例题 4-3 [洛谷[B2124](https://www.luogu.com.cn/problem/B2124)] 判断字符串是否为回文
 输入一个字符串，输出该字符串是否回文。回文是指顺读和倒读都一样的字符串。
@@ -611,15 +611,16 @@ foreach(char c in str){
 ```csharp
 string str = Console.ReadLine();
 int length = str.Length;
+
 bool suc = true; 
-for (int i = 0; i < length / 2; i++){
-    if(str[i] != str[length-i-1]){
+for (int i = 0; i < length / 2; i++) {
+    if(str[i] != str[length-i-1]) {
         suc = false;
         break;
     }
 }
 
-if(suc){
+if(suc) {
     Console.WriteLine("yes");
 }
 else{
@@ -647,8 +648,7 @@ else{
 olleh dlrow
 <!-- endtab -->
 <!-- tab 样例输出 -->
-hello
-world
+hello world
 <!-- endtab -->
 {% endtabs %}
 

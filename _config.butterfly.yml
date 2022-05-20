@@ -898,8 +898,8 @@ CDN:
     # instantpage:
     # typed:
     # pangu:
-    fancybox_css_v4: https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.css
-    fancybox_v4: https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.js
+    fancybox_css: https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.css
+    fancybox: https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.js
     # medium_zoom:
     # snackbar_css:
     # snackbar:

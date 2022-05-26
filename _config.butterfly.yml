@@ -127,12 +127,12 @@ cover:
   position: both
   # When cover is not set, the default cover is displayed (當沒有設置cover時，默認的封面顯示)
   default_cover:
-    - \img\default_cover\koishi-satori1.jpg
-    - \img\default_cover\luogu-daily.png
-    - \img\default_cover\marisa1.jpg
-    - \img\default_cover\marisa2.jpg
-    - \img\default_cover\merry1.jpg
-    - \img\default_cover\remilia2.jpg
+    - /img/default_cover/koishi-satori1.jpg
+    - /img/default_cover/luogu-daily.png
+    - /img/default_cover/marisa1.jpg
+    - /img/default_cover/marisa2.jpg
+    - /img/default_cover/merry1.jpg
+    - /img/default_cover/remilia2.jpg
 
 # Replace Broken Images (替換無法顯示的圖片)
 error_img:

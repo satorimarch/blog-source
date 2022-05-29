@@ -2,10 +2,10 @@
 title: .NET5以上WPF发布单个文件
 tag:
   - c#
-  - wpf
-  - ".NET"
+  - WPF
+  - .NET
 categories:
-  - c#
+  - .NET
 mathjax: false
 sitemap: true
 abbrlink: 51b37ab1

@@ -3,8 +3,8 @@ title: 'C#基础教程[5] 方法'
 tag:
   - c#
 categories:
-  - 电子电路社
-  - c#教程
+  - [电子电路社]
+  - [c#, c#教程]
 mathjax: true
 sticky: 1
 abbrlink: 1926cc4

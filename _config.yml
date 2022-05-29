@@ -111,6 +111,20 @@ deploy:
   repo: git@github.com:satorimarch/satorimarch.github.io.git
   branch: master
 
+# Category & Tag
+default_category: uncategorized
+tag_map:
+  '.NET': dotnet
+  'c#': csharp
+  动态规划: DP
+
+category_map:
+  博客: blog
+  游记: travelogue
+  'c#': csharp
+  'c#教程': charp-tutorial
+  '.NET': dotnet
+
 sitemap:
   path: sitemap.xml
   rel: false

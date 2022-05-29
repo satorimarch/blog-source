@@ -3,8 +3,8 @@ title: 'C#基础教程[2] 循环程序设计'
 tag:
   - c#
 categories:
-  - 电子电路社
-  - c#教程
+  - [电子电路社]
+  - [c#, c#教程]
 mathjax: true
 abbrlink: 3965
 date: 2021-11-29 00:00:00

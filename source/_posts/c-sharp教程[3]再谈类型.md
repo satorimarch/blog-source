@@ -3,8 +3,8 @@ title: 'C#基础教程[3] 再谈类型'
 tag:
   - c#
 categories:
-  - 电子电路社
-  - c#教程
+  - [电子电路社]
+  - [c#, c#教程]
 mathjax: true
 abbrlink: b2a89920
 date: 2021-12-06 00:00:00

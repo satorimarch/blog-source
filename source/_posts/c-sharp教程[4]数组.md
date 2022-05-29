@@ -3,8 +3,8 @@ title: 'C#基础教程[4] 数组'
 tag:
   - c#
 categories:
-  - 电子电路社
-  - c#教程
+  - [电子电路社]
+  - [c#, c#教程]
 mathjax: true
 abbrlink: b5342c8
 date: 2022-1-16 00:00:00

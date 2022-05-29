@@ -3,8 +3,7 @@ title: 'C#中的数据类型转换'
 tags:
   - c#
 categories:
-  - 电子电路社
-  - c#教程
+  - c#
 cover: 'https://s6.jpg.cm/2021/11/28/LLOoFu.png'
 abbrlink: 19004
 date: 2021-08-19 00:00:00

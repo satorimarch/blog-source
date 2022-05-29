@@ -1,12 +1,12 @@
 ---
 title: "git仓库嵌套及导致github actions部署hexo博客失败"
 tag:
-  - "git"
-  - "github"
-  - "hexo"
+  - Git
+  - Github
+  - hexo
 categories:
-  - "hexo"
-  - "git"
+  - [博客]
+  - [Git]
 mathjax: false
 sitemap: true
 date: 2022-05-29 20:18:42

@@ -1,5 +1,7 @@
 ---
 title: test
+categories:
+  - 博客
 mathjax: true
 abbrlink: 63534
 date: 2021-11-28 00:00:00

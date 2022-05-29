@@ -3,8 +3,8 @@ title: 'C#基础教程[1] 简介及基本语法'
 tags:
   - c#
 categories:
-  - 电子电路社
-  - c#教程
+  - [电子电路社]
+  - [c#, c#教程]
 cover: 'https://s6.jpg.cm/2021/11/28/LLO4yG.jpg'
 mathjax: true
 abbrlink: 38394

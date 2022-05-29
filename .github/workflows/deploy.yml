@@ -2,7 +2,7 @@ name: Hexo Deploy
 on:
   push:
     branches:
-      - master
+      - source
 jobs:
   build:
     runs-on: ubuntu-latest

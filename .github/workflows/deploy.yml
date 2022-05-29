@@ -1,33 +1,41 @@
 name: Hexo Deploy
+
 on:
   push:
     branches:
-      - source
+      - master
+
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
+    if: github.event.repository.owner.id == github.event.sender.id
+
     steps:
-      - name: 切换分支
+      - name: Checkout source
         uses: actions/checkout@v2
-
-      - name: 安装依赖
-        if: steps.cache.outputs.cache-hit != 'true'
-        run: npm ci
-
-      - name: 清除Hexo
-        uses: heowc/action-hexo@main
         with:
-          args: clean
+          ref: master
 
-      - name: 生成Hexo
-        uses: heowc/action-hexo@main
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
         with:
-          args: generate
+          node-version: '12'
 
-      - name: 部署到master分支
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          personal_token: ${{ secrets.HEXO_DEPLOY_KEY }}
-          external_repository: satorimarch/satorimarch.github.io
-          publish_branch: master
-          publish_dir: ./public
+      - name: Setup Hexo
+        env:
+          ACTION_DEPLOY_KEY: ${{ secrets.HEXO_DEPLOY_KEY }}
+        run: |
+          mkdir -p ~/.ssh/
+          echo "$ACTION_DEPLOY_KEY" > ~/.ssh/id_rsa
+          chmod 700 ~/.ssh
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+          git config --global user.email "john@doe.com"
+          git config --global user.name "John Doe"
+          npm install hexo-cli -g
+          npm install
+
+      - name: Deploy
+        run: |
+          hexo clean
+          hexo deploy

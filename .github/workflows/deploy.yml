@@ -1,34 +1,41 @@
-name: Hexo Github Actions
-on: [push]
+name: Hexo Deploy
+
+on:
+  push:
+    branches:
+      - source
+
 jobs:
-    build:
-      runs-on: ubuntu-latest
-      steps:
-        - name: Checkout source
-          uses: actions/checkout@v1
-        - name: Setup Node.js ${{ matrix.node_version }}
-          uses: actions/setup-node@v1
-          with:
-            node-version: ${{ matrix.node_version }}
-        - name: Cache NPM dependencies
-          uses: actions/cache@v2
-          with:
-            path: ~/.npm
-            key: ${{ runner.OS }}-npm-cache
-            restore-keys: |
-              ${{ runner.OS }}-npm-cache
-        - name: Setup hexo
-          env:
-            ACTION_DEPLOY_KEY: ${{ secrets.HEXO_DEPLOY_KEY }}
-          run: |
-            mkdir -p ~/.ssh/
-            echo "$ACTION_DEPLOY_KEY" > ~/.ssh/id_rsa
-            chmod 600 ~/.ssh/id_rsa
-            ssh-keyscan github.com >> ~/.ssh/known_hosts
-            git config --global user.email "3275494617@qq.com"
-            git config --global user.name "satorimarch"
-            npm install hexo-cli -g
-            npm install
-        - name: Hexo deploy
-          run: |
-            npm run deploy
+  build:
+    runs-on: ubuntu-latest
+    if: github.event.repository.owner.id == github.event.sender.id
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v3
+        with:
+          ref: source
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+
+      - name: Setup Hexo
+        env:
+          ACTION_DEPLOY_KEY: ${{ secrets.HEXO_DEPLOY_KEY }}
+        run: |
+          mkdir -p ~/.ssh/
+          echo "$ACTION_DEPLOY_KEY" > ~/.ssh/id_rsa
+          chmod 700 ~/.ssh
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+          git config --global user.email "3275494617@qq.com"
+          git config --global user.name "satorimarch"
+          npm install hexo-cli -g
+          npm install
+
+      - name: Deploy
+        run: |
+          hexo clean
+          hexo deploy

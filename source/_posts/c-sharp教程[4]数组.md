@@ -277,7 +277,7 @@ for (int i = 1; i <= n; i++) {
 
 可以想到, 我们需要的是一个 能够同时保存 `int` 类型的数和 `string` 类型的字符串的类型, 再定义这个类型的数组(之前说过可以声明更复杂类型的数组), 再用 `Sort` 对它进行排序, 而我们还没学过自定义类型, 怎么办呢
 
-好在 `c#` 提供了 `Tuple` 类型(中文为元组), 可以由多个元素组成(最多8个), 用 `tupleName.Item1` 访问第一个元素(以此类推)
+好在 `c#4.0` 提供了 `Tuple` 类型(中文为元组), 可以由多个元素组成(最多8个), 用 `tupleName.Item1` 访问第一个元素(以此类推)
 
 用 `Tuple<int, string>` 来表示第一个元素为 `int` 类型, 第二个元素为 `string` 类型的 `Tuple`
 
@@ -289,7 +289,7 @@ for (int i = 1; i <= n; i++) {
 Console.Write("请输入学生总数: ");
 int n = Convert.ToInt32(Console.ReadLine());
 
-Tuple<int, string>[] scores = new Tuple<int, string>[n+1];
+Tuple<int, string>[] scores = new Tuple<int, string>[n + 1];
 for (int i = 1; i <= n; i++) {
     Console.Write("请输入第{ 0 }个学生的姓名: ", i);
     string b = Console.ReadLine();

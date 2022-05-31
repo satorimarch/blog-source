@@ -103,7 +103,7 @@ int b = int.Parse(a);
 
 ## 注意事项：
 
-1. 试图将字符串`"5.5"`转换成`int`类型时，下面两种方法都是**错误**的：
+试图将字符串`"5.5"`转换成`int`类型时，下面两种方法都是**错误**的：
 
 ```csharp
 int a = Convert.ToInt32("5.5");
@@ -117,15 +117,15 @@ int a = (int)Convert.ToDouble("5.5");
 int a = (int)Double.Parse("5.5");
 ```
 
-2. 进行从字符串到数值类型转换时 `Convert` 和 `Parse` 做法一般可以互换, 区别在于对 `null` 的处理不同:
+进行从字符串到数值类型转换时 `Convert` 和 `Parse` 做法一般可以互换, 区别在于对 `null` 的处理不同:
 ```csharp
 int a = Convert.ToInt32(null); // a == 0
 int b = int.Parse(null); // 异常
 ```
 
-3. 如果您希望自己封装的类可以被 `Convert` 类转换为基本类型, 请继承`IConvertible` 接口, 如果你觉得有些类型不应该被转化(点名`ToDateTime`), 请抛出 `InvalidCastException` 异常
-
 另外, 传入空字符串 `""` 时两者都会抛出异常
+
+如果您希望自己封装的类可以被 `Convert` 类转换为基本类型, 请继承`IConvertible` 接口, 如果你觉得有些类型不应该被转化(点名`ToDateTime`), 请抛出 `InvalidCastException` 异常
 
 ## 使用 `int.TryParse()` 方法
 
@@ -141,6 +141,7 @@ int b = int.Parse(null); // 异常
 >
 > 对于**所有数字数据类型**，均可使用类似的 `TryParse()` 方法。
 
+~~其实多写一个try catch就解决了, 没什么用~~
 例如：
 
 ```csharp

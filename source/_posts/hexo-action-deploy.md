@@ -1,5 +1,5 @@
 ---
-title: "git仓库嵌套及导致github actions部署hexo博客失败"
+title: "git仓库嵌套导致github actions部署hexo博客失败"
 tag:
   - Git
   - Github

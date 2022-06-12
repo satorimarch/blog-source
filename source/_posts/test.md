@@ -68,6 +68,14 @@ $$
 
 这也是脚注[^1]
 
+| title                | an English long long title                               | 一个中文长长长长标题~                  |
+| -------------------- | :------------------------------------------------------- | -------------------------------------- |
+| content              | Lorem ipsum dolor sit amet, consectetur adipisicing elit | 中文内容                               |
+| **markdown**~~测试~~ | 公式测试: $(a+b)^2=a^2+2ab+b^2$                          | 使用HTML 转义字符如: &#124; (`&#124;`) |
+
+
+
+
 ---
 # butterfly主题自带 tag plugins
 > 以下部分的[来源和详细使用方法](https://butterfly.js.org/posts/4aa8abbe/#%E6%A8%99%E7%B1%A4%E5%A4%96%E6%8E%9B%EF%BC%88Tag-Plugins%EF%BC%89)

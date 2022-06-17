@@ -882,8 +882,8 @@ CDN:
     # disqusjs:
     # disqusjs_css:
     # twikoo:
-    waline_js: https://lib.baomitu.com/waline/2.5.1/waline.js
-    waline_css: https://lib.baomitu.com/waline/2.5.1/waline.css
+    waline_js: https://unpkg.com/@waline/client@2.6.1/dist/waline.js
+    waline_css: https://unpkg.com/@waline/client@v2/dist/waline.css
     sharejs: https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/social-share.js/1.0.16/js/social-share.min.js
     sharejs_css: https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/social-share.js/1.0.16/css/share.min.css
     mathjax: https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/mathjax/3.2.0/es5/tex-mml-chtml.js

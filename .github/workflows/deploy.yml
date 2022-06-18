@@ -38,7 +38,7 @@ jobs:
 
       - name: Restore file modification time
         run: |
-          find source -name '*.md' | while read file; do touch -d "$(git log -1 --format="@%ct" "$file")" "$file"; done
+          git config core.quotepath false; git ls-files | while read file; do touch -d "$(git log -1 --format="@%ct" "$file")" "$file"; done; hexo cl; hexo g;
 
       - name: Deploy
         run: |

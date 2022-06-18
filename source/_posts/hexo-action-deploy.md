@@ -57,3 +57,17 @@ deploy:
 ```
 
 但在我的win10电脑能部署, github actions 却不行, 或许是 windows 和 Ubuntu linux 的差异吧, 也有可能是别的问题, 不太清楚, ~~反正解决了就行了~~.
+
+# 更新时间错误
+因为 `git clone` 后文件的修改时间实际上是 `clone` 的时间, 所以没在 `front-matter` 填写 `updated` 的文章的更新时间全都是 `clone` 的时间. 只要把文件的修改时间变为该文件最后 `commit` 的时间, 在生成之前加一行命令即可:
+
+```bash
+find source/_posts -name '*.md' | while read file; do touch -d "$(git log -1 --format="@%ct" "$file")" "$file"; done
+```
+
+{% note warning %}
+一定要注意, 如果使用的是 `actions/checkout`, 要加上参数 `fetch-depth: 0` 来获取所有历史记录
+{% endnote %}
+
+参考链接:
+[修复 CI 构建博客造成的更新时间错误](https://mrseawave.github.io/blogs/articles/2021/01/07/ci-hexo-update-time/)

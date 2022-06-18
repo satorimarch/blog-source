@@ -18,8 +18,8 @@ jobs:
           submodules: true
 
       - name: Restore file modification time
-              run: |
-                git ls-files -z | while read -d '' path; do touch -d "$(git log -1 --format="@%ct" "$path")" "$path"; done
+        run: |
+          git ls-files -z | while read -d '' path; do touch -d "$(git log -1 --format="@%ct" "$path")" "$path"; done
 
       - name: Setup Node.js
         uses: actions/setup-node@v3

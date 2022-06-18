@@ -17,10 +17,6 @@ jobs:
           ref: source
           submodules: true
 
-      - name: Restore file modification time
-        run: |
-          find source -name '*.md' | while read file; do touch -d "$(git log -1 --format="@%ct" "$file")" "$file"; done
-
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
@@ -39,6 +35,10 @@ jobs:
           git config --global user.name "satorimarch"
           npm install hexo-cli -g
           npm install
+
+      - name: Restore file modification time
+        run: |
+          find source -name '*.md' | while read file; do touch -d "$(git log -1 --format="@%ct" "$file")" "$file"; done
 
       - name: Deploy
         run: |

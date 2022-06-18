@@ -14,6 +14,7 @@ jobs:
       - name: Checkout source
         uses: actions/checkout@v3
         with:
+          fetch-depth: 0
           ref: source
           submodules: true
 
@@ -38,7 +39,7 @@ jobs:
 
       - name: Restore file modification time
         run: |
-          git config core.quotepath false; git ls-files | while read file; do touch -d "$(git log -1 --format="@%ct" "$file")" "$file"; done; hexo cl; hexo g;
+          git config core.quotepath false; git ls-files | while read file; do touch -d '$(git log -1 --format="@%ct" "$file")' $file; done;
 
       - name: Deploy
         run: |

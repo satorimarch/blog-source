@@ -229,13 +229,13 @@ post_pagination: 2
 
 # anchor
 # when you scroll in post, the URL will update according to header id.
-anchor: false
+anchor: true
 
 # Displays outdated notice for a post (文章過期提醒)
 noticeOutdate:
-  enable: false
+  enable: true
   style: flat # style: simple/flat
-  limit_day: 500 # When will it be shown
+  limit_day: 365 # When will it be shown
   position: top # position: top/bottom
   message_prev: It has been
   message_next: days since the last update, the content of the article may be outdated.
@@ -344,9 +344,9 @@ waline:
   bg: 'https://s2.loli.net/2022/04/12/ZJAFrE1Ih537let.png' # waline background
   pageview: true
   option:
-    placeholder: '发条友善的评论吧(不填信息默认匿名)'
-    langMode:
-      sofa: 这个评论区冷冷清清的...不如发条评论？
+    locale:
+      placeholder: '发条友善的评论吧 (不填信息默认匿名, 填写邮箱可以收到回复通知)'
+      sofa: '这个评论区空空如也...不如发条评论?'
     emoji: 
       - 'https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/bilibili'
 
@@ -423,7 +423,7 @@ footer:
   owner:
     enable: true
     since: 2021
-  custom_text: "hello world!\n"
+  custom_text: "若无力驾驭，自由便是负担"
   copyright: true # Copyright of theme and framework
 
 # Analysis

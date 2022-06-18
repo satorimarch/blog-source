@@ -8,7 +8,7 @@ date: 2021-11-28 16:13:43
 在读高中生，东方众。面临升学，学业繁忙，请多关照
 偶尔可能会随手写些博客
 
-github: <a href="https://github.com/satorimarch"><img style="margin:0px; display: inline-block; vertical-align:text-top;" src="https://img.shields.io/badge/-satorimarch-181717?style=flat-square&logo=github"></a>
+github: <a href="https://github.com/satorimarch"><img style="margin:0px; display: inline-block; vertical-align:text-top;" src="https://img.shields.io/badge/-satorimarch-181717?style=flat-square&logo=github"/></a>
 email: jiangdu9@outlook.com
 
 osu mania([卡片来源](https://osu-sig.vercel.app)):

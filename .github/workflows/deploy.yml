@@ -19,8 +19,7 @@ jobs:
 
       - name: Restore file modification time
         run: |
-          git config core.quotepath false;
-          git ls-files | while read file; do touch -d "$(git log -1 --format="@%ct" "$file")" "$file"; done;
+          find source -name '*.md' | while read file; do touch -d "$(git log -1 --format="@%ct" "$file")" "$file"; done
 
       - name: Setup Node.js
         uses: actions/setup-node@v3

@@ -6,7 +6,6 @@ tag:
   - hexo
 categories:
   - [博客]
-  - [Git]
 mathjax: false
 sitemap: true
 abbrlink: 1524b8f2
@@ -19,12 +18,12 @@ date: 2022-05-29 20:18:42
 
 首先要用 `git rm --cached` 删除原来的内层仓库, 不要直接删除, 否则外层可能会感知不到, 然后输入命令:
 
-```gitbash
+```powershell
 git submodule add -b [branch] [repository_url] [path]
 ```
 
 例如:
-```gitbash
+```powershell
 git submodule add -b master https://github.com/jerryc127/hexo-theme-butterfly.git themes\butterfly
 ```
 
@@ -32,7 +31,7 @@ git submodule add -b master https://github.com/jerryc127/hexo-theme-butterfly.gi
 
 这之后直接 `git clone` 实际上并不会拉取到 submodule 中的代码, 应该在 `git clone` 命令中带上参数 `--recurse-submodules` 表示递归拉取所有子模块, 或者执行下面的命令:
 
-```gitbash
+```powershell
 git submodule init
 git submodule update
 ```

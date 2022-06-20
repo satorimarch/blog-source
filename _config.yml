@@ -3,13 +3,13 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: jiangdu的博客
-subtitle: "jiangdu's blog"
-# description: Blog
+title: jiangdu's blog
+subtitle: #"jiangdu's blog"
+description: "jiangdu的静态个人博客"
 author: jiangdu
 language: zh-CN
 # timezone: ''
-keywords: jiangdu,OI,编程,c#
+keywords: jiangdu,OI,编程,c#,satorimarch,hexo
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'

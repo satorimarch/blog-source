@@ -6,6 +6,7 @@ categories:
   - [电子电路社]
   - [c#, c#教程]
 cover: 'https://s6.jpg.cm/2021/11/28/LLO4yG.jpg'
+description: 为了学校社团课而写的c#基础教程第一章, 从hello world开始的C#之旅
 mathjax: true
 abbrlink: 38394
 date: 2021-11-23 00:00:00
@@ -33,9 +34,9 @@ IDE 即集成开发环境, 可以不严谨的理解为编写并运行代码所�
 
 [Visual Studio](https://visualstudio.microsoft.com/zh-hans/downloads/)：如果可以的话 `VS` 对于写 C# 必然是首选，不过体积较大，可能要占好几个GB
 
-[Sharp Develop](https://sourceforge.net/projects/sharpdevelop/)：`VS` 中很多功能对于初学者没有必要，所以也可以用 `Sharp Devlop`，安装包仅十几MB
+[Sharp Develop](https://sourceforge.net/projects/sharpdevelop/)：`VS` 中很多功能对于初学者没有必要，所以也可以用 `Sharp Devlop`，安装包仅十几MB，已停止维护
 
-如果使用手机或者因为各种原因没安装 IDE 可以使用在线工具例如[这个]( http://www.dooccn.com/csharp/)
+如果临时使用手机或者因为各种原因没安装 IDE 可以使用在线工具例如[这个]( http://www.dooccn.com/csharp/)
 
 # 简介
 
@@ -47,7 +48,7 @@ IDE 即集成开发环境, 可以不严谨的理解为编写并运行代码所�
 
 ---
 
-# 第一个 C# 程序
+# hello, world!
 
 各位同学可能在课内学习过一点 python。以输出 `"hello world"` 作为初学者的第一个程序是计算机界的传统，这是一个能打印出 `"hello world"` 的 python 程序：
 
